@@ -6,10 +6,17 @@ class AddReminderViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        CustomTextField(),
-        CustomTextField(),
+        CustomTextField(
+          controller: TextEditingController(),
+          label: 'Title',
+        ),
+        CustomTextField(
+          isDescriptionField: true,
+          controller: TextEditingController(),
+          label: 'Description',
+        ),
       ],
     );
   }
