@@ -24,10 +24,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.arrow_back_ios,
-              color: Color(0XFF160700),
-              size: 24,
+            Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Icon(
+                Icons.arrow_back_ios,
+                color: Color(0XFF160700),
+                size: 24,
+              ),
             ),
             SizedBox(
               width: 4,

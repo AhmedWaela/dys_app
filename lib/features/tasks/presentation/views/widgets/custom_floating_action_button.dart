@@ -5,8 +5,19 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {},
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 70),
+      child: FloatingActionButton(
+        backgroundColor: Color(0XFF4CB050),
+        child: Center(
+          child: Icon(
+            Icons.add,
+            size: 50,
+            color: Color(0XFFF6FFF9),
+          ),
+        ),
+        onPressed: () {},
+      ),
     );
   }
 }

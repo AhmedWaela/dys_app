@@ -13,6 +13,7 @@ class SanadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Lato',
         scaffoldBackgroundColor: const Color(0xffF6FFF9),
