@@ -13,6 +13,10 @@ class SanadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Lato',
+        scaffoldBackgroundColor: const Color(0xffF6FFF9),
+      ),
       initialRoute: ReminderView.route,
       routes: {
         ReminderView.route: (BuildContext context) => const ReminderView()
