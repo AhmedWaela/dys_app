@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sanad_app/core/assets/app_assets.dart';
+import 'package:sanad_app/core/styles/app_styles.dart';
 
 class TaskWidget extends StatelessWidget {
   const TaskWidget({super.key});
@@ -40,7 +42,7 @@ class TaskWidget extends StatelessWidget {
                   const SizedBox(
                     width: 9,
                   ),
-                  SvgPicture.asset('assets/images/Bell.svg')
+                  SvgPicture.asset(AppAssets.bellSvgPath)
                 ],
               ),
               const SizedBox(
@@ -48,11 +50,7 @@ class TaskWidget extends StatelessWidget {
               ),
               const Text(
                 'Reminder',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0XFF717171),
-                ),
+                style: AppStyles.textStyle12W400Grey,
               ),
               const SizedBox(
                 height: 15,
@@ -60,7 +58,7 @@ class TaskWidget extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    'assets/images/date.svg',
+                    AppAssets.dateSvgPath,
                     height: 16,
                     width: 16,
                   ),
@@ -69,17 +67,13 @@ class TaskWidget extends StatelessWidget {
                   ),
                   const Text(
                     '2024-12-12',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0XFF717171),
-                    ),
+                    style: AppStyles.textStyle12W400Grey,
                   ),
                   const SizedBox(
                     width: 17,
                   ),
                   SvgPicture.asset(
-                    'assets/images/Time Circle.svg',
+                    AppAssets.timeCircleSvgPath,
                     height: 16,
                     width: 16,
                   ),
@@ -88,11 +82,7 @@ class TaskWidget extends StatelessWidget {
                   ),
                   const Text(
                     '20:05',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0XFF717171),
-                    ),
+                    style: AppStyles.textStyle12W400Grey,
                   ),
                 ],
               ),
@@ -100,7 +90,7 @@ class TaskWidget extends StatelessWidget {
           ),
           Spacer(),
           SvgPicture.asset(
-            'assets/images/Pen.svg',
+            AppAssets.penSvgPath,
             height: 16,
             width: 16,
           ),
