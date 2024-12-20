@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-/// @docImport 'date_picker.dart';
-/// @docImport 'text_field.dart';
+// ignore_for_file: deprecated_member_use
+
 library;
 
 import 'dart:async';
@@ -336,23 +336,8 @@ class _HourMinuteControl extends StatelessWidget {
         _TimePickerModel.themeOf(context);
     final _TimePickerDefaults defaultTheme =
         _TimePickerModel.defaultThemeOf(context);
-    final Color backgroundColor =
-        timePickerTheme.hourMinuteColor ?? defaultTheme.hourMinuteColor;
     final ShapeBorder shape =
         timePickerTheme.hourMinuteShape ?? defaultTheme.hourMinuteShape;
-
-    final Set<MaterialState> states = <MaterialState>{
-      if (isSelected) MaterialState.selected,
-    };
-    final Color effectiveTextColor = MaterialStateProperty.resolveAs<Color>(
-      _TimePickerModel.themeOf(context).hourMinuteTextColor ??
-          _TimePickerModel.defaultThemeOf(context).hourMinuteTextColor,
-      states,
-    );
-    final TextStyle effectiveStyle = MaterialStateProperty.resolveAs<TextStyle>(
-      timePickerTheme.hourMinuteTextStyle ?? defaultTheme.hourMinuteTextStyle,
-      states,
-    ).copyWith(color: effectiveTextColor);
 
     final double height;
     switch (_TimePickerModel.entryModeOf(context)) {
@@ -765,26 +750,6 @@ class _AmPmButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Set<MaterialState> states = <MaterialState>{
-      if (selected) MaterialState.selected
-    };
-    final TimePickerThemeData timePickerTheme =
-        _TimePickerModel.themeOf(context);
-    final _TimePickerDefaults defaultTheme =
-        _TimePickerModel.defaultThemeOf(context);
-    final Color resolvedBackgroundColor =
-        MaterialStateProperty.resolveAs<Color>(
-            timePickerTheme.dayPeriodColor ?? defaultTheme.dayPeriodColor,
-            states);
-    final Color resolvedTextColor = MaterialStateProperty.resolveAs<Color>(
-        timePickerTheme.dayPeriodTextColor ?? defaultTheme.dayPeriodTextColor,
-        states);
-    final TextStyle? resolvedTextStyle =
-        MaterialStateProperty.resolveAs<TextStyle?>(
-                timePickerTheme.dayPeriodTextStyle ??
-                    defaultTheme.dayPeriodTextStyle,
-                states)
-            ?.copyWith(color: resolvedTextColor);
     final TextScaler buttonTextScaler =
         MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 2.0);
 
@@ -1016,8 +981,6 @@ class _DialPainter extends CustomPainter {
     required this.textDirection,
     required this.selectedValue,
   }) : super(repaint: PaintingBinding.instance.systemFonts) {
-    // TODO(polina-c): stop duplicating code across disposables
-    // https://github.com/flutter/flutter/issues/137435
     if (kFlutterMemoryAllocationsEnabled) {
       FlutterMemoryAllocations.instance.dispatchObjectCreated(
         library: 'package:flutter/material.dart',
@@ -1649,10 +1612,6 @@ class _DialState extends State<_Dial> with SingleTickerProviderStateMixin {
     final _TimePickerDefaults defaultTheme = theme.useMaterial3
         ? _TimePickerDefaultsM3(context)
         : _TimePickerDefaultsM2(context);
-    final Color backgroundColor =
-        timePickerTheme.dialBackgroundColor ?? defaultTheme.dialBackgroundColor;
-    final Color dialHandColor =
-        timePickerTheme.dialHandColor ?? defaultTheme.dialHandColor;
     final TextStyle labelStyle =
         timePickerTheme.dialTextStyle ?? defaultTheme.dialTextStyle;
     final Color dialTextUnselectedColor =
@@ -2232,7 +2191,7 @@ class _HourMinuteTextFieldState extends State<_HourMinuteTextField>
     InputDecoration inputDecoration = InputDecoration(
       // Prevent the error text from appearing when
       // timePickerTheme.inputDecorationTheme is used.
-      // TODO(tahatesser): Remove this workaround once
+
       // https://github.com/flutter/flutter/issues/54104
       // is fixed.
       errorStyle: defaultTheme.inputDecorationTheme.errorStyle,
@@ -2345,6 +2304,7 @@ class TimePickerDialog extends StatefulWidget {
     this.initialEntryMode = TimePickerEntryMode.dial,
     this.orientation,
     this.onEntryModeChanged,
+    this.onSelected,
   });
 
   /// The time initially selected when the dialog is shown.
@@ -2371,6 +2331,8 @@ class TimePickerDialog extends StatefulWidget {
 
   /// Optionally provide your own minute label text.
   final String? minuteLabelText;
+
+  final Function(TimeOfDay)? onSelected;
 
   /// Restoration ID to save and restore the state of the [TimePickerDialog].
   ///
@@ -2461,6 +2423,7 @@ class _TimePickerDialogState extends State<TimePickerDialog>
       setState(() {
         _selectedTime.value = value;
       });
+      widget.onSelected!(value);
     }
   }
 
@@ -2481,37 +2444,6 @@ class _TimePickerDialogState extends State<TimePickerDialog>
         widget.onEntryModeChanged?.call(value);
       });
     }
-  }
-
-  void _toggleEntryMode() {
-    switch (_entryMode.value) {
-      case TimePickerEntryMode.dial:
-        _handleEntryModeChanged(TimePickerEntryMode.input);
-      case TimePickerEntryMode.input:
-        _handleEntryModeChanged(TimePickerEntryMode.dial);
-      case TimePickerEntryMode.dialOnly:
-      case TimePickerEntryMode.inputOnly:
-        FlutterError('Can not change entry mode from $_entryMode');
-    }
-  }
-
-  void _handleCancel() {
-    Navigator.pop(context);
-  }
-
-  void _handleOk() {
-    if (_entryMode.value == TimePickerEntryMode.input ||
-        _entryMode.value == TimePickerEntryMode.inputOnly) {
-      final FormState form = _formKey.currentState!;
-      if (!form.validate()) {
-        setState(() {
-          _autovalidateMode.value = AutovalidateMode.always;
-        });
-        return;
-      }
-      form.save();
-    }
-    Navigator.pop(context, _selectedTime.value);
   }
 
   Size _minDialogSize(BuildContext context, {required bool useMaterial3}) {
@@ -2617,67 +2549,6 @@ class _TimePickerDialogState extends State<TimePickerDialog>
         ? _TimePickerDefaultsM3(context)
         : _TimePickerDefaultsM2(context);
     final ShapeBorder shape = pickerTheme.shape ?? defaultTheme.shape;
-    final Color entryModeIconColor =
-        pickerTheme.entryModeIconColor ?? defaultTheme.entryModeIconColor;
-    final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
-
-    final Widget actions = Padding(
-      padding: EdgeInsetsDirectional.only(start: theme.useMaterial3 ? 0 : 4),
-      child: Row(
-        children: <Widget>[
-          if (_entryMode.value == TimePickerEntryMode.dial ||
-              _entryMode.value == TimePickerEntryMode.input)
-            IconButton(
-              // In material3 mode, we want to use the color as part of the
-              // button style which applies its own opacity. In material2 mode,
-              // we want to use the color as the color, which already includes
-              // the opacity.
-              color: theme.useMaterial3 ? null : entryModeIconColor,
-              style: theme.useMaterial3
-                  ? IconButton.styleFrom(foregroundColor: entryModeIconColor)
-                  : null,
-              onPressed: _toggleEntryMode,
-              icon: Icon(_entryMode.value == TimePickerEntryMode.dial
-                  ? Icons.keyboard_outlined
-                  : Icons.access_time),
-              tooltip: _entryMode.value == TimePickerEntryMode.dial
-                  ? MaterialLocalizations.of(context).inputTimeModeButtonLabel
-                  : MaterialLocalizations.of(context).dialModeButtonLabel,
-            ),
-          Expanded(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(minHeight: 36),
-              child: Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: OverflowBar(
-                  spacing: 8,
-                  overflowAlignment: OverflowBarAlignment.end,
-                  children: <Widget>[
-                    TextButton(
-                      style: pickerTheme.cancelButtonStyle ??
-                          defaultTheme.cancelButtonStyle,
-                      onPressed: _handleCancel,
-                      child: Text(widget.cancelText ??
-                          (theme.useMaterial3
-                              ? localizations.cancelButtonLabel
-                              : localizations.cancelButtonLabel.toUpperCase())),
-                    ),
-                    TextButton(
-                      style: pickerTheme.confirmButtonStyle ??
-                          defaultTheme.confirmButtonStyle,
-                      onPressed: _handleOk,
-                      child: Text(
-                          widget.confirmText ?? localizations.okButtonLabel),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
 
     final Offset tapTargetSizeOffset = switch (theme.materialTapTargetSize) {
       MaterialTapTargetSize.padded => Offset.zero,
@@ -3616,7 +3487,7 @@ class _TimePickerDefaultsM2 extends _TimePickerDefaults {
       hintStyle: hourMinuteTextStyle.copyWith(
           color: _colors.onSurface.withOpacity(0.36)),
       // Prevent the error text from appearing.
-      // TODO(rami-a): Remove this workaround once
+
       // https://github.com/flutter/flutter/issues/54104
       // is fixed.
       errorStyle: const TextStyle(fontSize: 0, height: 1),
@@ -3909,7 +3780,6 @@ class _TimePickerDefaultsM3 extends _TimePickerDefaults {
   @override
   TextStyle get hourMinuteTextStyle {
     return MaterialStateTextStyle.resolveWith((Set<MaterialState> states) {
-      // TODO(tahatesser): Update this when https://github.com/flutter/flutter/issues/131247 is fixed.
       // This is using the correct text style from Material 3 spec.
       // https://m3.material.io/components/time-pickers/specs#fd0b6939-edab-4058-82e1-93d163945215
       return switch (entryMode) {
@@ -3959,7 +3829,7 @@ class _TimePickerDefaultsM3 extends _TimePickerDefaults {
       hintStyle: hourMinuteTextStyle.copyWith(
           color: _colors.onSurface.withOpacity(0.36)),
       // Prevent the error text from appearing.
-      // TODO(rami-a): Remove this workaround once
+
       // https://github.com/flutter/flutter/issues/54104
       // is fixed.
       errorStyle: const TextStyle(fontSize: 0),
@@ -3974,14 +3844,12 @@ class _TimePickerDefaultsM3 extends _TimePickerDefaults {
 
   @override
   MaterialStateProperty<Color?>? get timeSelectorSeparatorColor {
-    // TODO(tahatesser): Update this when tokens are available.
     // This is taken from https://m3.material.io/components/time-pickers/specs.
     return MaterialStatePropertyAll<Color>(_colors.onSurface);
   }
 
   @override
   MaterialStateProperty<TextStyle?>? get timeSelectorSeparatorTextStyle {
-    // TODO(tahatesser): Update this when tokens are available.
     // This is taken from https://m3.material.io/components/time-pickers/specs.
     return MaterialStatePropertyAll<TextStyle?>(_textTheme.displayLarge);
   }
