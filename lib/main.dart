@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:sanad_app/core/services/flutter_local_notifications_service.dart';
 import 'package:sanad_app/features/tasks/presentation/views/add_reminder_view.dart';
 import 'package:sanad_app/features/tasks/presentation/views/reminder_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterLocalNotificationsService.initialize();
   runApp(const SanadApp());
 }
 
