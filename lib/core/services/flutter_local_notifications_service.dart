@@ -32,23 +32,45 @@ class FlutterLocalNotificationsService {
     int id,
     String title,
     String description,
+    int progress,
+    bool finished,
   ) async {
     NotificationDetails notificationDetails = NotificationDetails(
-        android: AndroidNotificationDetails(
-          'Basic Notification Channel Id',
-          'BasicNotification Channel Name',
-          sound: RawResourceAndroidNotificationSound('basic_notification'),
-          subText: 'Be ready for task',
-          actions: [
-            AndroidNotificationAction(
-              'id',
-              'Clear',
-              cancelNotification: true,
-            )
-          ],
-        ),
-        iOS: DarwinNotificationDetails());
+      android: AndroidNotificationDetails(
+        'Basic Notification Channel Id',
+        'Basic Notification Channel Name',
+        priority: finished ? Priority.high : Priority.low,
+        importance: finished ? Importance.high : Importance.low,
+        sound: finished
+            ? RawResourceAndroidNotificationSound('basic_notification')
+            : null,
+        subText: 'Be ready for task',
+        maxProgress: 100,
+        showProgress: true,
+        progress: progress,
+        indeterminate: false,
+        actions: [
+          AndroidNotificationAction(
+            'id',
+            'Clear',
+            cancelNotification: true,
+          ),
+        ],
+      ),
+      iOS: DarwinNotificationDetails(
+        presentSound: finished, // تشغيل الصوت فقط عند الاكتمال
+      ),
+    );
+
     await flutterLocalNotificationsPlugin.show(
-        id, title, description, notificationDetails);
+      id,
+      title,
+      description,
+      notificationDetails,
+    );
+  }
+
+  static Future<void> cancelNotification(int id) async {
+    await flutterLocalNotificationsPlugin.cancel(id);
   }
 }
