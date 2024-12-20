@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sanad_app/features/tasks/presentation/views/add_reminder_view.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({super.key});
@@ -16,7 +17,9 @@ class CustomFloatingActionButton extends StatelessWidget {
             color: Color(0XFFF6FFF9),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AddReminderView.route);
+        },
       ),
     );
   }

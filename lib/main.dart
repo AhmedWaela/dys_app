@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:sanad_app/features/tasks/presentation/views/add_reminder_view.dart';
 import 'package:sanad_app/features/tasks/presentation/views/reminder_view.dart';
 
 Future<void> main() async {
@@ -20,7 +21,8 @@ class SanadApp extends StatelessWidget {
       ),
       initialRoute: ReminderView.route,
       routes: {
-        ReminderView.route: (BuildContext context) => const ReminderView()
+        ReminderView.route: (BuildContext context) => const ReminderView(),
+        AddReminderView.route: (BuildContext context) => const AddReminderView()
       },
     );
   }

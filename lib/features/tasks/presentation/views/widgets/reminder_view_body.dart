@@ -7,6 +7,7 @@ class ReminderViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: 6,
       itemBuilder: (context, index) {
         return TaskWidget();
       },
