@@ -1,12 +1,6 @@
-import 'dart:async';
-import 'package:dys_app/core/utils/app_dimentions.dart';
-import 'package:dys_app/features/onboarding/presentation/views/onboarding_view.dart';
-import 'package:dys_app/features/splash/presentation/manager/splash_cubit/splash_cubit.dart';
-import 'package:dys_app/features/splash/presentation/views/widgets/ball.dart';
-import 'package:dys_app/features/splash/presentation/views/widgets/ball_shadow.dart';
-import 'package:dys_app/features/splash/presentation/views/widgets/splash_content.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:dys_app/core/exports/exports.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -33,9 +27,12 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                 });
               },
             );
-            Future.delayed(const Duration(seconds: 3), () {
-              Navigator.pushNamed(context, OnboardingView.route);
-            });
+            Future.delayed(
+              const Duration(seconds: 3),
+              () {
+                Navigator.pushNamed(context, OnboardingView.route);
+              },
+            );
           }
         },
         builder: (context, state) {
