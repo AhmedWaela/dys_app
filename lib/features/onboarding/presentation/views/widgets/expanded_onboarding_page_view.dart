@@ -1,5 +1,4 @@
 import 'package:dys_app/core/exports/exports.dart';
-import 'package:dys_app/features/onboarding/presentation/manager/onboarding_cubit/on_boarding_cubit.dart';
 
 class ExpandedOnBoardingPageView extends StatelessWidget {
   const ExpandedOnBoardingPageView({super.key});
@@ -26,6 +25,7 @@ class ExpandedOnBoardingPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: PageView.builder(
+        controller: BlocProvider.of<OnBoardingCubit>(context).pageController,
         onPageChanged: (value) {
           BlocProvider.of<OnBoardingCubit>(context).changeIndex(value);
         },

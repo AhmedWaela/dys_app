@@ -22,7 +22,9 @@ class DotsIndicatorsAndNextButton extends StatelessWidget {
                 height: 48,
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () async {
+                  await BlocProvider.of<OnBoardingCubit>(context).nextPage();
+                },
               ),
               SizedBox(
                 height: 99,

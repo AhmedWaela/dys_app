@@ -1,5 +1,4 @@
 import 'package:dys_app/core/exports/exports.dart';
-import 'package:dys_app/features/onboarding/presentation/manager/onboarding_cubit/on_boarding_cubit.dart';
 import 'package:dys_app/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
 
 class OnboardingView extends StatelessWidget {
