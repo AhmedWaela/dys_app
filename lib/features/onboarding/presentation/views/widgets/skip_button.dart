@@ -5,10 +5,10 @@ class SkipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: 16),
-      child: GestureDetector(
-        onTap: () {},
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: EdgeInsets.only(right: 16, top: 2),
         child: Row(
           children: [
             Text(
@@ -19,9 +19,12 @@ class SkipButton extends StatelessWidget {
               ),
             ),
             SizedBox(width: 4),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 24,
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Icon(
+                Icons.arrow_forward_ios,
+                size: 24,
+              ),
             ),
           ],
         ),
