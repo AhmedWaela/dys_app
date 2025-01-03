@@ -1,4 +1,6 @@
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
+import 'package:dys_app/features/splash/presentation/views/widgets/splash_view_body.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -12,6 +14,7 @@ class OnboardingView extends StatelessWidget {
           SkipButton(),
         ],
       ),
+      body: OnBoardingViewBody(),
     );
   }
 }

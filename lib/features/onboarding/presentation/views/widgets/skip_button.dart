@@ -6,14 +6,23 @@ class SkipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 16, top: 5),
+      padding: EdgeInsets.only(right: 16),
       child: GestureDetector(
         onTap: () {},
         child: Row(
           children: [
-            Text("Skip"),
+            Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
             SizedBox(width: 4),
-            Icon(Icons.arrow_forward_ios),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 24,
+            ),
           ],
         ),
       ),
