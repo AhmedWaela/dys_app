@@ -1,4 +1,5 @@
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -19,6 +20,8 @@ class SanadApp extends StatelessWidget {
           initialRoute: SplashView.route,
           routes: {
             SplashView.route: (BuildContext context) => const SplashView(),
+            OnboardingView.route: (BuildContext context) =>
+                const OnboardingView()
           },
         );
       },
