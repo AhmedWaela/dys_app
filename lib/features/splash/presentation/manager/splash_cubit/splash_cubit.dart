@@ -1,6 +1,6 @@
 import 'package:dys_app/core/utils/app_dimentions.dart';
+import 'package:dys_app/features/splash/data/repos/custom_ticker_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'splash_state.dart';
 
@@ -22,52 +22,44 @@ class SplashCubit extends Cubit<SplashState> {
     animationController = AnimationController(
       vsync: const CustomTickerProvider(),
       duration: const Duration(seconds: 1),
-    )..addListener(
-        () {
-          if (add) {
-            ballY += 15;
-          } else {
-            ballY -= 15;
-          }
-          if (ballY <= -200) {
-            times += 1;
-            add = true;
-            showShadow = true;
-          }
-          if (ballY >= 0) {
-            add = false;
-            showShadow = false;
-            width += 50;
-            height += 50;
-            bottomValue -= 200;
-          }
-          if (times == 3) {
-            showShadow = false;
-            width = AppDimentions.screenWidth;
-            height = AppDimentions.screenHight;
-            animationController.stop();
-          }
-          emit(
-            BallAnimated(
-              add: add,
-              ballY: ballY,
-              bottomValue: bottomValue,
-              height: height,
-              showShadow: showShadow,
-              times: times,
-              width: width,
-            ),
-          );
-        },
-      );
+    )..addListener(controlOnAnimation);
     animationController.repeat();
   }
-}
 
-class CustomTickerProvider extends TickerProvider {
-  const CustomTickerProvider();
-  @override
-  Ticker createTicker(TickerCallback onTick) {
-    return Ticker(onTick);
+  void controlOnAnimation() {
+    if (add) {
+      ballY += 15;
+    } else {
+      ballY -= 15;
+    }
+    if (ballY <= -200) {
+      times += 1;
+      add = true;
+      showShadow = true;
+    }
+    if (ballY >= 0) {
+      add = false;
+      showShadow = false;
+      width += 50;
+      height += 50;
+      bottomValue -= 200;
+    }
+    if (times == 3) {
+      showShadow = false;
+      width = AppDimentions.screenWidth;
+      height = AppDimentions.screenHight;
+      animationController.stop();
+    }
+    emit(
+      BallAnimated(
+        add: add,
+        ballY: ballY,
+        bottomValue: bottomValue,
+        height: height,
+        showShadow: showShadow,
+        times: times,
+        width: width,
+      ),
+    );
   }
 }
