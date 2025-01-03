@@ -1,3 +1,4 @@
+import 'package:dys_app/core/assets/app_assets.dart';
 import 'package:dys_app/core/exports/exports.dart';
 import 'package:dys_app/features/onboarding/presentation/views/widgets/onboarding_item.dart';
 
@@ -10,7 +11,11 @@ class ExpandedOnBoardingPageView extends StatelessWidget {
       child: PageView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {
-          return OnBoardingItem();
+          return OnBoardingItem(
+            description: "",
+            image: AppAssets.onboarding1,
+            title: "",
+          );
         },
       ),
     );
