@@ -14,3 +14,5 @@ export 'dart:async';
 export 'package:dys_app/features/onboarding/data/models/onboarding_model.dart';
 export 'package:dys_app/features/onboarding/presentation/views/widgets/onboarding_item.dart';
 export 'package:dys_app/core/assets/app_assets.dart';
+export 'package:dys_app/features/onboarding/presentation/views/widgets/dots_indicators_and_nest_button.dart';
+export 'package:dys_app/features/onboarding/presentation/views/widgets/expanded_onboarding_page_view.dart';
