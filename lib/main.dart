@@ -1,8 +1,12 @@
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/core/utils/singleton_instance.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([
+    SingletonInstance.init(),
+  ]);
   runApp(const SanadApp());
 }
 
