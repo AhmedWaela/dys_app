@@ -19,6 +19,7 @@ class OnBoardingItem extends StatelessWidget {
         ),
         Lottie.asset(
           image,
+          height: 247,
         ),
         SizedBox(
           height: AppDimentions.screenHight * 48 / 812,
