@@ -24,13 +24,20 @@ class OnBoardingItem extends StatelessWidget {
         SizedBox(
           height: AppDimentions.screenHight * 48 / 812,
         ),
-        Text(title),
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         SizedBox(
           height: AppDimentions.screenHight * 24 / 812,
         ),
         Text(
           description,
           textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
         ),
       ],
     );
