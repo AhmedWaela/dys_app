@@ -1,3 +1,4 @@
+import 'package:dys_app/core/utils/app_dimentions.dart';
 import 'package:dys_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,10 +12,15 @@ class SanadApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialRoute: SplashView.route,
-      routes: {
-        SplashView.route: (BuildContext context) => const SplashView(),
+    return Builder(
+      builder: (context) {
+        AppDimentions.initScreenDimensions(context);
+        return GetMaterialApp(
+          initialRoute: SplashView.route,
+          routes: {
+            SplashView.route: (BuildContext context) => const SplashView(),
+          },
+        );
       },
     );
   }
