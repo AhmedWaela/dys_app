@@ -3,4 +3,8 @@ part 'on_boarding_state.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingState> {
   OnBoardingCubit() : super(OnBoardingInitial());
+
+  void changeIndex(int index) {
+    emit(IndexChanged(currentIndex: index));
+  }
 }

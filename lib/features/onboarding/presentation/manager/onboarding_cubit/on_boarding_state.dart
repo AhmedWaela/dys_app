@@ -5,4 +5,8 @@ sealed class OnBoardingState {}
 
 final class OnBoardingInitial extends OnBoardingState {}
 
-final class IndexChanged extends OnBoardingState {}
+final class IndexChanged extends OnBoardingState {
+  final int currentIndex;
+
+  IndexChanged({required this.currentIndex});
+}
