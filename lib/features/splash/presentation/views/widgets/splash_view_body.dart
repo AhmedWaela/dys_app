@@ -5,6 +5,10 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox();
+    return SizedBox(
+      child: Stack(
+        children: [],
+      ),
+    );
   }
 }
