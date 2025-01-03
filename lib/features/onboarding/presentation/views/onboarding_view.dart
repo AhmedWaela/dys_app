@@ -1,4 +1,5 @@
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/features/onboarding/presentation/manager/onboarding_cubit/on_boarding_cubit.dart';
 import 'package:dys_app/features/onboarding/presentation/views/widgets/onboarding_view_body.dart';
 
 class OnboardingView extends StatelessWidget {
@@ -6,14 +7,17 @@ class OnboardingView extends StatelessWidget {
   static const String route = "onboardingview";
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
-        toolBarHeight: 29,
-        actions: [
-          SkipButton(),
-        ],
+    return BlocProvider(
+      create: (BuildContext context) => OnBoardingCubit(),
+      child: const Scaffold(
+        appBar: CustomAppBar(
+          toolBarHeight: 29,
+          actions: [
+            SkipButton(),
+          ],
+        ),
+        body: OnBoardingViewBody(),
       ),
-      body: OnBoardingViewBody(),
     );
   }
 }
