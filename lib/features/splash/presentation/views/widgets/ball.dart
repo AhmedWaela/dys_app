@@ -1,3 +1,4 @@
+import 'package:dys_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Ball extends StatelessWidget {
@@ -23,7 +24,7 @@ class Ball extends StatelessWidget {
           width: width,
           height: height,
           decoration: const BoxDecoration(
-            color: Color(0xff4CB050),
+            color: AppColors.kPrimaryColor,
             shape: BoxShape.circle,
           ),
         ),
