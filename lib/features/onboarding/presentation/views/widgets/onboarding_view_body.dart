@@ -1,5 +1,7 @@
 import 'package:dys_app/core/constants/app_colors.dart';
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/features/onboarding/presentation/views/widgets/dot_indicator.dart';
+import 'package:dys_app/features/onboarding/presentation/views/widgets/dots_indicator.dart';
 import 'package:dys_app/features/onboarding/presentation/views/widgets/expanded_onboarding_page_view.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
@@ -29,6 +31,7 @@ class DotsIndicatorsAndNextButton extends StatelessWidget {
           SizedBox(
             height: 50,
           ),
+          DotsIndicators()
         ],
       ),
     );
