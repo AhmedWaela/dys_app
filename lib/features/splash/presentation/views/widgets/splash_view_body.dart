@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dys_app/core/utils/app_dimentions.dart';
+import 'package:dys_app/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:dys_app/features/splash/presentation/manager/splash_cubit/splash_cubit.dart';
 import 'package:dys_app/features/splash/presentation/views/widgets/ball.dart';
 import 'package:dys_app/features/splash/presentation/views/widgets/ball_shadow.dart';
@@ -32,6 +33,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                 });
               },
             );
+            Future.delayed(const Duration(seconds: 3), () {
+              Navigator.pushNamed(context, OnboardingView.route);
+            });
           }
         },
         builder: (context, state) {
