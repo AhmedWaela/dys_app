@@ -1,23 +1,37 @@
+import 'dart:async';
 import 'package:dys_app/core/utils/app_dimentions.dart';
 import 'package:dys_app/features/splash/presentation/manager/splash_cubit/splash_cubit.dart';
 import 'package:dys_app/features/splash/presentation/views/widgets/ball.dart';
 import 'package:dys_app/features/splash/presentation/views/widgets/ball_shadow.dart';
+import 'package:dys_app/features/splash/presentation/views/widgets/splash_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
   @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  bool showSplashContent = false;
+  @override
   Widget build(BuildContext context) {
-    bool showSplashContent = false;
     return SizedBox(
       height: AppDimentions.screenHight,
       width: AppDimentions.screenWidth,
       child: BlocConsumer<SplashCubit, SplashState>(
         listener: (context, state) {
-          if (state is SplashContentDisplayed) {
-            showSplashContent = true;
+          if (state.times == 3) {
+            Timer(
+              const Duration(milliseconds: 200),
+              () {
+                setState(() {
+                  showSplashContent = true;
+                });
+              },
+            );
           }
         },
         builder: (context, state) {
@@ -25,7 +39,7 @@ class SplashViewBody extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               AnimatedPositioned(
-                bottom: state is BallAnimated ? state.bottomValue : 500,
+                bottom: state.bottomValue,
                 duration: const Duration(milliseconds: 600),
                 child: Column(
                   children: [
@@ -39,6 +53,7 @@ class SplashViewBody extends StatelessWidget {
                   ],
                 ),
               ),
+              if (showSplashContent) SplashContent()
             ],
           );
         },

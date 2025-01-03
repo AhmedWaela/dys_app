@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:dys_app/core/utils/app_dimentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -47,10 +45,6 @@ class SplashCubit extends Cubit<SplashState> {
             showShadow = false;
             width = AppDimentions.screenWidth;
             height = AppDimentions.screenHight;
-            Timer(
-              const Duration(milliseconds: 300),
-              () {},
-            );
             animationController.stop();
           }
           emit(
