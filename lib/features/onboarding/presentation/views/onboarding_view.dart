@@ -9,14 +9,16 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => OnBoardingCubit(),
-      child: const Scaffold(
+      child: Scaffold(
         appBar: CustomAppBar(
           toolBarHeight: 29,
           actions: [
-            SkipButton(),
+            SkipButton(
+              onTap: () {},
+            ),
           ],
         ),
-        body: OnBoardingViewBody(),
+        body: const OnBoardingViewBody(),
       ),
     );
   }

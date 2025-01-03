@@ -1,29 +1,35 @@
 import 'package:dys_app/core/exports/exports.dart';
-import 'package:dys_app/features/onboarding/presentation/views/widgets/custom_button.dart';
-import 'package:dys_app/features/onboarding/presentation/views/widgets/dots_indicator.dart';
 
 class DotsIndicatorsAndNextButton extends StatelessWidget {
   const DotsIndicatorsAndNextButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 255,
       width: AppDimentions.screenWidth,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 50,
-          ),
-          DotsIndicators(),
-          SizedBox(
-            height: 48,
-          ),
-          CustomButton(),
-          SizedBox(
-            height: 99,
-          ),
-        ],
+      child: BlocBuilder<OnBoardingCubit, OnBoardingState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              DotsIndicators(
+                currentIndex: state is IndexChanged ? state.currentIndex : 0,
+              ),
+              SizedBox(
+                height: 48,
+              ),
+              CustomButton(
+                onTap: () {},
+              ),
+              SizedBox(
+                height: 99,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -1,12 +1,12 @@
 import 'package:dys_app/core/exports/exports.dart';
 
 class SkipButton extends StatelessWidget {
-  const SkipButton({super.key});
-
+  const SkipButton({super.key, this.onTap});
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Padding(
         padding: EdgeInsets.only(right: 16, top: 2),
         child: Row(

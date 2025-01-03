@@ -1,7 +1,9 @@
 part of 'on_boarding_cubit.dart';
 
 @immutable
-sealed class OnBoardingState {}
+sealed class OnBoardingState {
+  PageController pageController = PageController();
+}
 
 final class OnBoardingInitial extends OnBoardingState {}
 

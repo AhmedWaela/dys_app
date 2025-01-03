@@ -7,4 +7,9 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   void changeIndex(int index) {
     emit(IndexChanged(currentIndex: index));
   }
+
+  void nextPage() async {
+    await state.pageController.nextPage(
+        duration: const Duration(milliseconds: 200), curve: Curves.easeInOut);
+  }
 }
