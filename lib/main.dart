@@ -1,6 +1,4 @@
-import 'package:dys_app/core/utils/app_dimentions.dart';
-import 'package:dys_app/features/splash/presentation/views/splash_view.dart';
-import 'package:flutter/material.dart';
+import 'package:dys_app/core/exports/exports.dart';
 import 'package:get/get.dart';
 
 void main() {

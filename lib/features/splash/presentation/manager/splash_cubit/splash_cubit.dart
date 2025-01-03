@@ -1,7 +1,4 @@
-import 'package:dys_app/core/utils/app_dimentions.dart';
-import 'package:dys_app/features/splash/data/repos/custom_ticker_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dys_app/core/exports/exports.dart';
 part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
