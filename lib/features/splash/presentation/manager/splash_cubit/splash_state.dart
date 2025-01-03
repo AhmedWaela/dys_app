@@ -4,3 +4,7 @@ part of 'splash_cubit.dart';
 sealed class SplashState {}
 
 final class SplashInitial extends SplashState {}
+
+final class BallAnimated extends SplashState {}
+
+final class SplashContentDisplayed extends SplashState {}
