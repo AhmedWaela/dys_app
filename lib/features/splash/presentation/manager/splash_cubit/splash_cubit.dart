@@ -47,13 +47,23 @@ class SplashCubit extends Cubit<SplashState> {
             showShadow = false;
             width = AppDimentions.screenWidth;
             height = AppDimentions.screenHight;
-            Timer(const Duration(milliseconds: 300), () {
-              showSplashContent = true;
-              emit(SplashContentDisplayed());
-            });
+            Timer(
+              const Duration(milliseconds: 300),
+              () {},
+            );
             animationController.stop();
           }
-          emit(BallAnimated());
+          emit(
+            BallAnimated(
+              add: add,
+              ballY: ballY,
+              bottomValue: bottomValue,
+              height: height,
+              showShadow: showShadow,
+              times: times,
+              width: width,
+            ),
+          );
         },
       );
     animationController.repeat();
