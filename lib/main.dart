@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:dys_app/core/exports/exports.dart';
+import 'package:dys_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -33,7 +34,8 @@ class SanadApp extends StatelessWidget {
           routes: {
             SplashView.route: (BuildContext context) => const SplashView(),
             OnboardingView.route: (BuildContext context) =>
-                const OnboardingView()
+                const OnboardingView(),
+            SignUpView.route : (BuildContext context)=> const SignUpView()
           },
         );
       },
