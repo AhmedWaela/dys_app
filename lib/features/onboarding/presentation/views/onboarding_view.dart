@@ -12,13 +12,16 @@ class OnboardingView extends StatelessWidget {
         appBar: CustomAppBar(
           toolBarHeight: 29,
           actions: [
-            Builder(builder: (context) {
-              return SkipButton(
-                onTap: () async {
-                  await BlocProvider.of<OnBoardingCubit>(context).jump();
-                },
-              );
-            }),
+            Builder(
+              builder: (context) {
+                return SkipButton(
+                  onTap: () async {
+                    await BlocProvider.of<OnBoardingCubit>(context)
+                        .jumpToLastPage(context);
+                  },
+                );
+              },
+            ),
           ],
         ),
         body: const OnBoardingViewBody(),

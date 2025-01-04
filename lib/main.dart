@@ -1,5 +1,6 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:dys_app/core/exports/exports.dart';
-import 'package:dys_app/core/utils/singleton_instance.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 void main() async {
@@ -7,7 +8,12 @@ void main() async {
   await Future.wait([
     SingletonInstance.init(),
   ]);
-  runApp(const SanadApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const SanadApp(),
+    ),
+  );
 }
 
 class SanadApp extends StatelessWidget {
@@ -19,6 +25,9 @@ class SanadApp extends StatelessWidget {
       builder: (context) {
         AppDimentions.initScreenDimensions(context);
         return GetMaterialApp(
+          useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           initialRoute: SplashView.route,
           routes: {

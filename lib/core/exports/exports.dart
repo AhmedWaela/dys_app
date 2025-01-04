@@ -19,3 +19,4 @@ export 'package:dys_app/features/onboarding/presentation/views/widgets/expanded_
 export 'package:dys_app/features/onboarding/presentation/manager/onboarding_cubit/on_boarding_cubit.dart';
 export 'package:dys_app/features/onboarding/presentation/views/widgets/custom_button.dart';
 export 'package:dys_app/features/onboarding/presentation/views/widgets/dots_indicator.dart';
+export 'package:dys_app/core/utils/singleton_instance.dart';

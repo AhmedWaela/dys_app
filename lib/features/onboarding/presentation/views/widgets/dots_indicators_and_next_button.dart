@@ -5,24 +5,23 @@ class DotsIndicatorsAndNextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 255,
-      width: AppDimentions.screenWidth,
-      child: BlocBuilder<OnBoardingCubit, OnBoardingState>(
-        builder: (BuildContext context, OnBoardingState state) {
-          return Column(
-            children: [
-              SizedBox(height: 50),
-              DotsIndicators(currentIndex: state.index),
-              SizedBox(height: 48),
-              CustomButton(
-                onTap: () async {},
-              ),
-              SizedBox(height: 99),
-            ],
-          );
-        },
-      ),
+    return BlocBuilder<OnBoardingCubit, OnBoardingState>(
+      builder: (BuildContext context, OnBoardingState state) {
+        return Column(
+          children: [
+            SizedBox(height: AppDimentions.screenHight * 50 / 812),
+            DotsIndicators(currentIndex: state.index),
+            SizedBox(height: AppDimentions.screenHight * 48 / 812),
+            CustomButton(
+              data: state.index == 2 ? "Get Started" : "Next",
+              onTap: () async {
+                await BlocProvider.of<OnBoardingCubit>(context).nextPage(context);
+              },
+            ),
+            SizedBox(height: AppDimentions.screenHight * 99 / 812),
+          ],
+        );
+      },
     );
   }
 }

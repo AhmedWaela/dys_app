@@ -13,16 +13,11 @@ class OnBoardingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
+        Lottie.asset(image, height: 200),
         SizedBox(
-          height: AppDimentions.screenHight * 51 / 812,
-        ),
-        Lottie.asset(
-          image,
-          height: 247,
-        ),
-        SizedBox(
-          height: AppDimentions.screenHight * 48 / 812,
+          height: 24
         ),
         Text(
           title,
@@ -32,7 +27,7 @@ class OnBoardingItem extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: AppDimentions.screenHight * 24 / 812,
+          height: 24,
         ),
         Text(
           description,

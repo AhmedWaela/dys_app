@@ -2,8 +2,9 @@ import 'package:dys_app/core/constants/app_colors.dart';
 import 'package:dys_app/core/exports/exports.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onTap});
+  const CustomButton({super.key, this.onTap, required this.data});
   final void Function()? onTap;
+  final String data;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,10 +16,10 @@ class CustomButton extends StatelessWidget {
         ),
         height: 48,
         width: AppDimentions.screenHight,
-        child: const Center(
+        child: Center(
           child: Text(
-            "Next",
-            style: TextStyle(
+            data,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Colors.white,
