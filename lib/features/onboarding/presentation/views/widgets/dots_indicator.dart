@@ -1,4 +1,3 @@
-import 'package:dys_app/core/constants/app_colors.dart';
 import 'package:dys_app/core/exports/exports.dart';
 import 'package:dys_app/features/onboarding/presentation/views/widgets/dot_indicator.dart';
 

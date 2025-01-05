@@ -48,11 +48,11 @@ class AuthTextFormField extends StatelessWidget {
     return Container(
       height: 48,
       decoration: BoxDecoration(
-        color: Color(0xffF9FFFA),
+        color: AppColors.kSoftWhite,
         borderRadius: BorderRadius.circular(6),
         boxShadow: [
           BoxShadow(
-            color: const Color(0x29000000),
+            color: AppColors.kBlackOverlay,
             blurRadius: 5.2,
             offset: Offset(0, -1),
           ),
@@ -60,26 +60,45 @@ class AuthTextFormField extends StatelessWidget {
       ),
       child: TextFormField(
         decoration: InputDecoration(
-            hintText: "Email",
-            prefixIcon: Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: SvgPicture.asset(
-                "assets/images/email.svg",
-                width: 24,
-                height: 10,
-                colorFilter:
-                    ColorFilter.mode(Color(0xff6D6D6D), BlendMode.srcIn),
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-            )),
+          hintStyle: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: AppColors.kNeutralGray,
+          ),
+          hintText: "Email",
+          prefixIcon: PrefeixIcon(),
+          border: buildBorder(),
+          enabledBorder: buildBorder(),
+          focusedBorder: buildBorder(),
+        ),
+      ),
+    );
+  }
+
+  OutlineInputBorder buildBorder() {
+    return OutlineInputBorder(
+      borderSide: BorderSide.none,
+    );
+  }
+}
+
+class PrefeixIcon extends StatelessWidget {
+  const PrefeixIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 16,
+        top: 12,
+        bottom: 12,
+      ),
+      child: SvgPicture.asset(
+        AppAssets.emailSvg,
+        colorFilter: ColorFilter.mode(
+          AppColors.kGrayishCharcoal,
+          BlendMode.srcIn,
+        ),
       ),
     );
   }

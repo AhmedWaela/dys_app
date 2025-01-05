@@ -20,3 +20,7 @@ export 'package:dys_app/features/onboarding/presentation/manager/onboarding_cubi
 export 'package:dys_app/features/onboarding/presentation/views/widgets/custom_button.dart';
 export 'package:dys_app/features/onboarding/presentation/views/widgets/dots_indicator.dart';
 export 'package:dys_app/core/utils/singleton_instance.dart';
+export 'package:dys_app/features/auth/presentation/views/sign_up_view.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:flutter/foundation.dart';
+export 'package:dys_app/core/constants/app_colors.dart';

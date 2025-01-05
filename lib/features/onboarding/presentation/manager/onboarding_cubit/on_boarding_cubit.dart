@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dys_app/core/exports/exports.dart';
-import 'package:dys_app/features/auth/presentation/views/sign_up_view.dart';
 part 'on_boarding_state.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingState> {
@@ -34,7 +33,6 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
   Future<void> saveStatusAndNavigate(BuildContext context) async {
     await SingletonInstance.sharedPreferences
         .setBool("IsPassOnBoardingView", true);
-    Navigator.pushNamed(context,SignUpView.route
-    );
+    Navigator.pushNamed(context, SignUpView.route);
   }
 }
