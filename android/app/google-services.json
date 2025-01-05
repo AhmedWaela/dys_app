@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "876741330129",
+    "project_id": "dys-app-445ba",
+    "storage_bucket": "dys-app-445ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876741330129:android:be9fcf3860f4d8477d31f0",
+        "android_client_info": {
+          "package_name": "com.example.dys_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876741330129-003j5tstu4am4jbunpdlah8hq6boc2ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6xRFuQRTxMnSNUD5q2oQV4F1b3tvL7dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876741330129-003j5tstu4am4jbunpdlah8hq6boc2ns.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "876741330129-ot1bfa2jahk58pjmdous0hfrq04aj5l5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sanadApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876741330129:android:f70c00b510dd06737d31f0",
+        "android_client_info": {
+          "package_name": "com.example.sanad_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876741330129-jvk0obpdi6k6v1co796v1sni8ljpk1nf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sanad_app",
+            "certificate_hash": "ca4e500cd786b35560177b289bf16cf74ed9c419"
+          }
+        },
+        {
+          "client_id": "876741330129-003j5tstu4am4jbunpdlah8hq6boc2ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6xRFuQRTxMnSNUD5q2oQV4F1b3tvL7dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876741330129-003j5tstu4am4jbunpdlah8hq6boc2ns.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "876741330129-ot1bfa2jahk58pjmdous0hfrq04aj5l5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sanadApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
